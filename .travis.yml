@@ -4,7 +4,7 @@ python:
   - "3.3"
 
 before_install:
-  - ./build_etcd.sh v2.0.10
+  - curl -L https://github.com/coreos/etcd/releases/download/v2.0.10/etcd-v2.0.10-linux-amd64.tar.gz | tar zxv
   - pip install --upgrade setuptools
 
 # command to install dependencies
@@ -14,7 +14,7 @@ install:
 
 # command to run tests
 script:
-  PATH=$PATH:./etcd/bin bin/test
+  PATH=$PATH:./etcd-v2.0.10-linux-amd64/ bin/test
 
 # Add env var to detect it during build
 env: TRAVIS=True
